@@ -343,7 +343,7 @@ p{ margin:10px 0 0; color:var(--muted); }
   background-image:
     radial-gradient(900px 280px at 20% 0%, rgba(37,99,235,.14), transparent 60%),
     radial-gradient(700px 300px at 90% 10%, rgba(37,99,235,.12), transparent 55%),
-    url("https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1800&q=60");
+    url('./images/background.png');
   background-size: cover;
   background-position: center;
   filter: blur(2px);
@@ -759,4 +759,5 @@ p{ margin:10px 0 0; color:var(--muted); }
     flex-direction:row;
     align-items:center;
   }
+
 }

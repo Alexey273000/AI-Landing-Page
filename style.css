@@ -346,7 +346,6 @@ p{ margin:10px 0 0; color:var(--muted); }
     url('./images/background.png');
   background-size: cover;
   background-position: center;
-  filter: blur(1px);
   opacity: .25; /* 0.1-0.15 */
   transform: scale(1.06);
 }
@@ -761,4 +760,5 @@ p{ margin:10px 0 0; color:var(--muted); }
   }
 
 }
+
 

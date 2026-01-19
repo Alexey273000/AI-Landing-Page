@@ -272,7 +272,7 @@ function sendQuizToTelegram(phoneNumber, quizAnswers) {
                   `📋 Ответы: ${JSON.stringify(quizAnswers, null, 2)}`;
 
   // URL вашей функции в Яндекс.Облаке
-  const YANDEX_FUNCTION_URL = 'https://functions.yandexcloud.net/YOUR_YANDEX_FUNCTION_URL';
+  const YANDEX_FUNCTION_URL = 'https://functions.yandexcloud.net/d4e0jgoq4npo6bkceckk';
 
   // Отправка POST-запроса
   fetch(YANDEX_FUNCTION_URL, {
@@ -306,3 +306,4 @@ function sendQuizToTelegram(phoneNumber, quizAnswers) {
 //   sendQuizToTelegram(phone, answers);
 // });
 })();
+

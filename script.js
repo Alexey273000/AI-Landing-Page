@@ -264,4 +264,45 @@
     window.location.href = "thankyou.html";
   });
 
+// Функция отправки данных квиза
+function sendQuizToTelegram(phoneNumber, quizAnswers) {
+  // Формируем текст сообщения (адаптируйте под структуру вашего квиза)
+  const message = `📱 Новый лид с квиза!\n\n` +
+                  `📞 Телефон: ${phoneNumber}\n` +
+                  `📋 Ответы: ${JSON.stringify(quizAnswers, null, 2)}`;
+
+  // URL вашей функции в Яндекс.Облаке
+  const YANDEX_FUNCTION_URL = 'https://functions.yandexcloud.net/YOUR_YANDEX_FUNCTION_URL';
+
+  // Отправка POST-запроса
+  fetch(YANDEX_FUNCTION_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ message: message, type: 'quiz_lead' }) // type можно поменять
+  })
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Ошибка сети');
+    }
+    return response.text();
+  })
+  .then(data => {
+    console.log('Успешно отправлено:', data);
+    // Здесь можно показать пользователю сообщение об успехе
+    // alert('Спасибо! Данные отправлены.');
+  })
+  .catch(error => {
+    console.error('Ошибка отправки:', error);
+    // Здесь можно показать пользователю сообщение об ошибке
+    // alert('Произошла ошибка. Пожалуйста, свяжитесь с нами другим способом.');
+  });
+}
+
+// Пример вызова функции (вставьте этот вызов в момент отправки формы квиза)
+// document.getElementById('quiz-form').addEventListener('submit', function(e) {
+//   e.preventDefault();
+//   const phone = document.getElementById('quiz-phone').value;
+//   const answers = {}; // Соберите сюда ответы на вопросы квиза
+//   sendQuizToTelegram(phone, answers);
+// });
 })();

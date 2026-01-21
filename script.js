@@ -243,27 +243,28 @@
     phoneInput.value = out;
   });
 
-  // Submit -> redirect to thankyou.html
   const form = $("#quizForm");
-  form?.addEventListener("submit", (e) => {
-    e.preventDefault();
-
-    const phone = phoneInput ? phoneInput.value.trim() : "";
-    const digits = normalizeDigits(phone);
-
-    if (digits.length < 11) {
-      showToast("Введите корректный номер телефона.");
-      phoneInput?.focus();
-      return;
-    }
-
-    state.phone = phone;
-
-    // ВАЖНО: пока без отправки данных (будет доработано позже).
-    // Редирект на отдельную страницу "Спасибо!"
-    window.location.href = "thankyou.html";
-  });
-
+form?.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const phone = phoneInput ? phoneInput.value.trim() : "";
+  const digits = normalizeDigits(phone);
+  if (digits.length < 11) {
+    showToast("Введите корректный номер телефона.");
+    phoneInput?.focus();
+    return;
+  }
+  state.phone = phone;
+  // 1. Формируем объект с ответами квиза
+  const quizAnswers = {
+    projectTypes: Array.from(state.projectTypes),
+    features: Array.from(state.features)
+  };
+  // 2. ВЫЗЫВАЕМ ФУНКЦИЮ ОТПРАВКИ (добавьте эту строку!)
+  sendQuizToTelegram(phone, quizAnswers);
+  // 3. После отправки делаем редирект
+  window.location.href = "thankyou.html";
+});
+  
 // Функция отправки данных квиза
 function sendQuizToTelegram(phoneNumber, quizAnswers) {
   // Формируем текст сообщения (адаптируйте под структуру вашего квиза)
@@ -306,4 +307,5 @@ function sendQuizToTelegram(phoneNumber, quizAnswers) {
 //   sendQuizToTelegram(phone, answers);
 // });
 })();
+
 

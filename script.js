@@ -259,7 +259,7 @@ form?.addEventListener("submit", (e) => {
     projectTypes: Array.from(state.projectTypes),
     features: Array.from(state.features)
   };
-  // 2. ВЫЗЫВАЕМ ФУНКЦИЮ ОТПРАВКИ (добавьте эту строку!)
+  // 2. ВЫЗЫВАЕМ ФУНКЦИЮ ОТПРАВКИ
   sendQuizToTelegram(phone, quizAnswers);
   // 3. После отправки делаем редирект
   window.location.href = "thankyou.html";

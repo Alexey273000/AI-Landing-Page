@@ -267,12 +267,12 @@ form?.addEventListener("submit", (e) => {
   
 // Функция отправки данных квиза
 function sendQuizToTelegram(phoneNumber, quizAnswers) {
-  // Формируем текст сообщения (адаптируйте под структуру вашего квиза)
+  // Формируем текст сообщения
   const message = `📱 Новый лид с квиза!\n\n` +
                   `📞 Телефон: ${phoneNumber}\n` +
                   `📋 Ответы: ${JSON.stringify(quizAnswers, null, 2)}`;
 
-  // URL вашей функции в Яндекс.Облаке
+  // URL функции в Яндекс.Облаке
   const YANDEX_FUNCTION_URL = 'https://functions.yandexcloud.net/d4e0jgoq4npo6bkceckk';
 
   // Отправка POST-запроса
@@ -289,23 +289,11 @@ function sendQuizToTelegram(phoneNumber, quizAnswers) {
   })
   .then(data => {
     console.log('Успешно отправлено:', data);
-    // Здесь можно показать пользователю сообщение об успехе
-    // alert('Спасибо! Данные отправлены.');
   })
   .catch(error => {
     console.error('Ошибка отправки:', error);
-    // Здесь можно показать пользователю сообщение об ошибке
-    // alert('Произошла ошибка. Пожалуйста, свяжитесь с нами другим способом.');
   });
 }
-
-// Пример вызова функции (вставьте этот вызов в момент отправки формы квиза)
-// document.getElementById('quiz-form').addEventListener('submit', function(e) {
-//   e.preventDefault();
-//   const phone = document.getElementById('quiz-phone').value;
-//   const answers = {}; // Соберите сюда ответы на вопросы квиза
-//   sendQuizToTelegram(phone, answers);
-// });
 })();
 
 
